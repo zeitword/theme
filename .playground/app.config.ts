@@ -1,5 +1,5 @@
 export default defineAppConfig({
-  myLayer: {
+  zeitLayer: {
     name: 'My amazing Nuxt layer (overwritten)'
   }
 })

@@ -1,12 +1,12 @@
 export default defineAppConfig({
-  myLayer: {
-    name: 'Hello from Nuxt layer'
+  zeitLayer: {
+    name: 'Hello from Zeitword layer'
   }
 })
 
 declare module '@nuxt/schema' {
   interface AppConfigInput {
-    myLayer?: {
+    zeitLayer?: {
       /** Project name */
       name?: string
     }
