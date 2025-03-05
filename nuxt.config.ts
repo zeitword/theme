@@ -1,6 +1,5 @@
 import { fileURLToPath } from "url";
-import { dirname, join, resolve } from "path";
-import tailwindcss from "@tailwindcss/vite";
+import { dirname, resolve } from "path";
 
 const currentDir = dirname(fileURLToPath(import.meta.url));
 
@@ -8,14 +7,18 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      import("@tailwindcss/vite").then((tailwindcss) => {
+        return tailwindcss.default(); // Call .default()
+      }),
+    ],
   },
 
   css: [resolve(currentDir, "assets/css/main.css")],
 
   image: {
     provider: "vercel",
-    dir: "public",
+    dir: "public", // Consider 'assets/images'
   },
 
   modules: ["@nuxt/image"],

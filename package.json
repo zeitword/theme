@@ -1,5 +1,5 @@
 {
-  "name": "my-nuxt-layer",
+  "name": "@zeitword/base-theme",
   "type": "module",
   "version": "0.0.1",
   "main": "./nuxt.config.ts",
