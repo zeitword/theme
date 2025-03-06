@@ -3,7 +3,7 @@ const { zeitLayer } = useAppConfig()
 </script>
 
 <template>
-  <div>
+  <div class="bg-red-50">
     <h1>Hello World!</h1>
     <pre>{{ zeitLayer }}</pre>
   </div>
