@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { QuestionsProps, TIntro, TButton, TBackground, TSpacing } from "~~/types"
+import type { QuestionsProps, TIntro, TButton, TBackground, TSpacing } from "@/types"
 import { AccordionContent, AccordionHeader, AccordionItem, AccordionRoot, AccordionTrigger } from "reka-ui"
 import { ChevronDown } from "lucide-vue-next"
 

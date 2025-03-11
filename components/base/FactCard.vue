@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TFactCard } from "~~/types"
+import type { TFactCard } from "@/types"
 const { number, animated = false, description, trailing, leading } = defineProps<TFactCard>()
 </script>
 

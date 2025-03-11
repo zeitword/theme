@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TBackground, TButton, TField, TTextLink, TSpacing } from "~~/types"
+import type { TBackground, TButton, TField, TTextLink, TSpacing } from "@/types"
 
 interface Props {
   spacing?: TSpacing
@@ -14,7 +14,7 @@ interface Props {
 type SubmitMessages = {
 	success: string
 	error: string
-} 
+}
 
 const {
   spacing = { vertical: "md" },

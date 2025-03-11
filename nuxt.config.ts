@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   vite: {
     plugins: [
       import("@tailwindcss/vite").then((tailwindcss) => {
-        return tailwindcss.default(); // Call .default()
+        return tailwindcss.default();
       }),
     ],
   },
@@ -18,7 +18,12 @@ export default defineNuxtConfig({
 
   image: {
     provider: "vercel",
-    dir: "public", // Consider 'assets/images'
+    dir: "public",
+  },
+
+  alias: {
+    "@": resolve(currentDir, "./"),
+    "base-theme": resolve(currentDir, "./"),
   },
 
   modules: ["@nuxt/image"],

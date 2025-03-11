@@ -1,17 +1,18 @@
 <script setup lang="ts">
-import type { TBackground } from "~~/types"
+import type { TBackground } from "@/types";
 
-type Props = TBackground
+type Props = TBackground;
 
-const { color = "neutral" } = defineProps<Props>()
+const { color = "neutral" } = defineProps<Props>();
 
 const bgColor = computed(() => {
-  if (!color) return "bg-neutral"
-  if (color === "white") return "bg-neutral"
-  if (color === "neutral") return "bg-neutral-subtle"
-  if (color === "accent") return "bg-accent"
-  if (color === "transparent") return "bg-transparent"
-})
+  if (!color) return "bg-neutral";
+  if (color === "white") return "bg-neutral";
+  if (color === "neutral") return "bg-neutral-subtle";
+  if (color === "accent") return "bg-accent";
+  if (color === "transparent") return "bg-transparent";
+  return "bg-neutral";
+});
 </script>
 
 <template>

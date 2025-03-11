@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue"
 import { icons } from "lucide-vue-next"
-import type { TIcon } from "~~/types"
+import type { TIcon } from "@/types"
 
 type Props = {
   icon: TIcon

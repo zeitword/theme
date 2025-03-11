@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TMarkerLocation } from "~~/types"
+import type { TMarkerLocation } from "@/types"
 
 type Props = {
   location: TMarkerLocation

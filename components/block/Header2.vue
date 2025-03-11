@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TBackground, TButton, TImage, TSize } from "~~/types"
+import type { TBackground, TButton, TImage, TSize } from "@/types"
 
 interface TSlide {
   name: string

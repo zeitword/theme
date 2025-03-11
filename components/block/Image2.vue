@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TBackground, TImage, TIntro, TSpacing } from "~~/types"
+import type { TBackground, TImage, TIntro, TSpacing } from "@/types"
 import { ref, onMounted } from "vue"
 import { ChevronsLeftRight } from "lucide-vue-next"
 

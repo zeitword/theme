@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TIntro } from "~~/types"
+import type { TIntro } from "@/types"
 
 type Props = TIntro & {
   inverse?: boolean

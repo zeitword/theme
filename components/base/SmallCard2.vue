@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TBaseCard } from "~~/types"
+import type { TBaseCard } from "@/types"
 
 type Props = {
   fgIconColor: string

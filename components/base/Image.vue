@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TImagePosition } from "~~/types"
+import type { TImagePosition } from "@/types"
 import { ImageOff } from "lucide-vue-next"
 
 type Props = {

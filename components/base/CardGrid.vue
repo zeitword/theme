@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TCard } from "~~/types"
+import type { TCard } from "@/types"
 
 interface Props {
   cards: TCard[]

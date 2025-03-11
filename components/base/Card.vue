@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { NuxtLink } from "#components"
-import type { TCard } from "~~/types"
+import type { TCard } from "@/types"
 
 type Props = TCard
 

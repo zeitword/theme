@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// import type { TBackground, TBadge, TLink, TImageLink, TTextLink, TSpacing } from "~~/types"
+import type { TBackground, TBadge, TLink, TImageLink, TTextLink, TSpacing } from "@/types"
 
 interface Props {
 	id: string

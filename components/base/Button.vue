@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { NuxtLink } from "#components"
-import type { TButton } from "~~/types"
+import type { TButton } from "@/types"
 
 type Props = TButton & {
   inverse?: boolean

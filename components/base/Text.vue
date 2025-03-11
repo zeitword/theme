@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { TAnimationOptions, TSize } from "~~/types"
+import type { TAnimationOptions, TSize } from "@/types"
 
 type Props = {
   size?: TSize
