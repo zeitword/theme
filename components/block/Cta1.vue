@@ -1,17 +1,6 @@
 <script setup lang="ts">
 import { CheckIcon } from "lucide-vue-next";
 
-type TLink = {
-  url: string;
-  target?: "_blank" | "_self";
-};
-
-interface TButton {
-  variant: "primary" | "secondary" | "transparent" | "text" | "accent";
-  link?: TLink;
-  text: string;
-}
-
 interface Props {
   heading?: string;
   title?: string;
