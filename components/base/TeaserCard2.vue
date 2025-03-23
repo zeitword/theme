@@ -1,6 +1,17 @@
 <script setup lang="ts">
-import { NuxtLink } from "#components"
-import type { TBaseCard } from "@/types"
+import { NuxtLink } from "#components";
+
+type TBaseCard = {
+  icon: string;
+  heading: string;
+  title: string;
+  description: string;
+  button: TButton;
+  variant: string;
+  blanket: boolean;
+  link: string;
+  interactive: boolean;
+};
 
 const {
   icon = "",
@@ -11,137 +22,137 @@ const {
   variant = "undefined",
   blanket = false,
   link = "",
-  interactive = false
-} = defineProps<TBaseCard>()
+  interactive = false,
+} = defineProps<TBaseCard>();
 
 const component = computed(() => {
-  if (link) return NuxtLink
-  return "div"
-})
+  if (link) return NuxtLink;
+  return "div";
+});
 
 type CardStateOption = {
-  default: string
-  hover: string
-}
+  default: string;
+  hover: string;
+};
 type VariantOptions = {
-  bg: CardStateOption
-  text: CardStateOption
-  iconBg: CardStateOption
-  iconFg: CardStateOption
-}
+  bg: CardStateOption;
+  text: CardStateOption;
+  iconBg: CardStateOption;
+  iconFg: CardStateOption;
+};
 
 const variantClasses: { [key: string]: VariantOptions } = {
   default: {
     bg: {
       default: "border border-neutral",
-      hover: "hover:bg-accent"
+      hover: "hover:bg-accent",
     },
     text: {
       default: "text-neutral",
-      hover: "hover:text-accent"
+      hover: "hover:text-accent",
     },
     iconBg: {
       default: "bg-secondary",
-      hover: "hover:bg-primary"
+      hover: "hover:bg-primary",
     },
     iconFg: {
       default: "text-primary",
-      hover: "hover:text-accent"
-    }
+      hover: "hover:text-accent",
+    },
   },
   primary: {
     bg: {
       default: "bg-primary",
-      hover: "hover:bg-accent"
+      hover: "hover:bg-accent",
     },
     text: {
       default: "text-primary-inverse",
-      hover: "hover:text-accent"
+      hover: "hover:text-accent",
     },
     iconBg: {
       default: "bg-secondary",
-      hover: "hover:bg-primary"
+      hover: "hover:bg-primary",
     },
     iconFg: {
       default: "text-primary",
-      hover: "hover:text-accent"
-    }
+      hover: "hover:text-accent",
+    },
   },
   secondary: {
     bg: {
       default: "bg-secondary",
-      hover: "hover:bg-accent"
+      hover: "hover:bg-accent",
     },
     text: {
       default: "text-neutral",
-      hover: "hover:text-accent"
+      hover: "hover:text-accent",
     },
     iconBg: {
       default: "bg-accent",
-      hover: "hover:bg-primary"
+      hover: "hover:bg-primary",
     },
     iconFg: {
       default: "text-primary",
-      hover: "hover:text-accent"
-    }
+      hover: "hover:text-accent",
+    },
   },
   accent: {
     bg: {
       default: "bg-accent",
-      hover: "hover:bg-primary"
+      hover: "hover:bg-primary",
     },
     text: {
       default: "text-neutral",
-      hover: "hover:text-primary-inverse"
+      hover: "hover:text-primary-inverse",
     },
     iconBg: {
       default: "bg-primary",
-      hover: "hover:bg-accent"
+      hover: "hover:bg-accent",
     },
     iconFg: {
       default: "text-accent",
-      hover: "hover:text-primary"
-    }
+      hover: "hover:text-primary",
+    },
   },
   white: {
     bg: {
       default: "bg-neutral",
-      hover: "hover:bg-neutral-hover"
+      hover: "hover:bg-neutral-hover",
     },
     text: {
       default: "text-neutral",
-      hover: "hover:text-neutral"
+      hover: "hover:text-neutral",
     },
     iconBg: {
       default: "bg-secondary",
-      hover: "hover:bg-primary"
+      hover: "hover:bg-primary",
     },
     iconFg: {
       default: "text-neutral",
-      hover: "hover:text-neutral"
-    }
-  }
-}
+      hover: "hover:text-neutral",
+    },
+  },
+};
 
 const variantClass = computed(() => {
   if (!variant || variant === "None" || variantClasses[variant] === undefined)
     return {
       bg: {
         default: "border border-neutral",
-        hover: "hover:border-accent hover:bg-accent"
+        hover: "hover:border-accent hover:bg-accent",
       },
       text: { default: "", hover: "" },
       iconBg: {
         default: "bg-secondary",
-        hover: "group-hover:bg-primary"
+        hover: "group-hover:bg-primary",
       },
       iconFg: {
         default: "text-primary",
-        hover: "group-hover:text-accent"
-      }
-    }
-  return variantClasses[variant]
-})
+        hover: "group-hover:text-accent",
+      },
+    };
+  return variantClasses[variant];
+});
 </script>
 
 <template>
@@ -156,28 +167,50 @@ const variantClass = computed(() => {
       :icon="icon"
       :fg="variantClass.iconFg.default"
       :bg="variantClass.iconBg.default"
-      :class="[interactive ? [variantClass.iconFg.hover, variantClass.iconBg.hover] : '']"
+      :class="[
+        interactive
+          ? [variantClass.iconFg.hover, variantClass.iconBg.hover]
+          : '',
+      ]"
     />
     <BaseBoxedIcon
       v-if="number"
       :text="number"
       :fg="variantClass.iconFg.default"
       :bg="variantClass.iconBg.default"
-      :class="[interactive ? [variantClass.iconFg.hover, variantClass.iconBg.hover] : '']"
+      :class="[
+        interactive
+          ? [variantClass.iconFg.hover, variantClass.iconBg.hover]
+          : '',
+      ]"
     />
     <BaseHeading
       v-if="heading"
       :inverse="blanket"
       :animation="{ enabled: false }"
-      :class="[variantClass.text.default, interactive ? variantClass.text.hover : '']"
+      :class="[
+        variantClass.text.default,
+        interactive ? variantClass.text.hover : '',
+      ]"
     >
       {{ heading }}
     </BaseHeading>
-    <BaseTitle :class="[variantClass.text.default, interactive ? variantClass.text.hover : '']" :animation="{ enabled: false }" :level="4" neutral>
+    <BaseTitle
+      :class="[
+        variantClass.text.default,
+        interactive ? variantClass.text.hover : '',
+      ]"
+      :animation="{ enabled: false }"
+      :level="4"
+      neutral
+    >
       {{ title }}
     </BaseTitle>
     <BaseText
-      :class="[variantClass.text.default, interactive ? variantClass.text.hover : '']"
+      :class="[
+        variantClass.text.default,
+        interactive ? variantClass.text.hover : '',
+      ]"
       :animation="{ enabled: false }"
       size="sm"
       :inverse="blanket"

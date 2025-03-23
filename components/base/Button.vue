@@ -1,17 +1,6 @@
 <script setup lang="ts">
 import { NuxtLink } from "#components";
 
-export type TLink = {
-  url: string;
-  target?: "_blank" | "_self";
-};
-
-export interface TButton {
-  variant: "primary" | "secondary" | "transparent" | "text" | "accent";
-  link?: TLink;
-  text: string;
-}
-
 type Props = TButton & {
   inverse?: boolean;
 };

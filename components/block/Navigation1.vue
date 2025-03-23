@@ -1,58 +1,57 @@
 <script setup lang="ts">
-import { MenuIcon, XIcon } from "lucide-vue-next"
-import { useWindowSize, useWindowScroll } from "@vueuse/core"
+import { MenuIcon, XIcon } from "lucide-vue-next";
+import { useWindowSize, useWindowScroll } from "@vueuse/core";
 
-const { width } = useWindowSize()
-const { y } = useWindowScroll()
+const { width } = useWindowSize();
+const { y } = useWindowScroll();
 
 interface Props {
-  logo?: TImageLink
-  links: TTextLink[]
-  button?: TButton
-  startInverted?: boolean
+  logo?: TImageLink;
+  links: TTextLink[];
+  button?: TButton;
+  startInverted?: boolean;
 }
 
 const {
   logo = {
     image: { src: "logo.svg" },
-    link: { url: "/", target: "_self" }
+    link: { url: "/", target: "_self" },
   },
   links = [
     { text: "Home", link: { url: "/", target: "_self" } },
     { text: "About", link: { url: "/about", target: "_self" } },
-    { text: "Contact", link: { url: "/contact", target: "_self" } }
+    { text: "Contact", link: { url: "/contact", target: "_self" } },
   ],
-  button = { text: "Get Started", link: { url: "/docs", target: "_self" } }
-} = defineProps<Props>()
+  button = { text: "Get Started", link: { url: "/docs", target: "_self" } },
+} = defineProps<Props>();
 
-const menuOpen = ref(false)
+const menuOpen = ref(false);
 
 function toggleMenu() {
-  menuOpen.value = !menuOpen.value
+  menuOpen.value = !menuOpen.value;
 }
 
-const lg_BREAKPOINT = 1024
+const lg_BREAKPOINT = 1024;
 
 watch(width, () => {
   if (width.value >= lg_BREAKPOINT) {
-    menuOpen.value = false
+    menuOpen.value = false;
   }
-})
+});
 
 const isScrolled = computed(() => {
-  return y.value > 100
-})
+  return y.value > 100;
+});
 </script>
 
 <template>
   <div
     class="transition-background fixed z-80 w-full duration-500 ease-in-out"
-    :class="!isScrolled ? 'border-neutral/0' : 'bg-neutral border-neutral border-b'"
+    :class="
+      !isScrolled ? 'border-neutral/0' : 'bg-neutral border-neutral border-b'
+    "
   >
-    <DWrapper
-      class="transition-all"
-      :class="isScrolled ? 'py-3' : 'py-5'"
-    >
+    <DWrapper class="transition-all" :class="isScrolled ? 'py-3' : 'py-5'">
       <div class="flex items-center gap-2">
         <div class="flex flex-1 items-center">
           <NuxtLink
@@ -63,7 +62,10 @@ const isScrolled = computed(() => {
           >
             <BaseImage
               class="h-full min-w-10 object-contain transition-all duration-500 ease-in-out"
-              :class="[isScrolled ? 'max-w-20' : 'max-w-32', startInverted && !isScrolled ? 'invert' : '']"
+              :class="[
+                isScrolled ? 'max-w-20' : 'max-w-32',
+                startInverted && !isScrolled ? 'invert' : '',
+              ]"
               v-bind="logo.image"
             />
           </NuxtLink>
@@ -71,7 +73,8 @@ const isScrolled = computed(() => {
         <div class="flex h-full items-center justify-stretch">
           <nav class="hidden h-full items-center gap-7 lg:flex">
             <BaseLink
-              v-for="link in links"
+              v-for="(link, index) in links"
+              :key="index"
               :to="link.link.url"
               :target="link.link.target"
               :inverse="!isScrolled && startInverted"
@@ -83,26 +86,18 @@ const isScrolled = computed(() => {
         <div class="flex h-full flex-1 items-center justify-end">
           <div class="lg:hidden">
             <button
-              @click="toggleMenu"
               class="bg-primary text-neutral-inverse grid size-12 place-items-center rounded-full"
+              @click="toggleMenu"
             >
-              <MenuIcon
-                v-if="!menuOpen"
-                class="size-5"
-              />
-              <XIcon
-                v-else
-                class="size-5"
-              />
+              <MenuIcon v-if="!menuOpen" class="size-5" />
+              <XIcon v-else class="size-5" />
             </button>
           </div>
-          <div
-            class="hidden lg:block"
-            v-if="button"
-          >
+          <div v-if="button" class="hidden lg:block">
             <BaseButton
-							:inverse="!isScrolled && startInverted"
-							v-bind="button"></BaseButton>
+              :inverse="!isScrolled && startInverted"
+              v-bind="button"
+            />
           </div>
         </div>
       </div>
@@ -113,10 +108,7 @@ const isScrolled = computed(() => {
     class="bg-neutral fixed top-0 z-40 h-full w-full pt-20 lg:hidden"
   >
     <DWrapper>
-      <div
-        class="flex flex-col"
-        @click="menuOpen = false"
-      >
+      <div class="flex flex-col" @click="menuOpen = false">
         <a
           v-for="link in links"
           :href="link.link.url"
@@ -125,11 +117,7 @@ const isScrolled = computed(() => {
         >
           {{ link.text }}
         </a>
-        <BaseButton
-          v-if="button"
-          v-bind="button"
-          class="mt-5"
-        ></BaseButton>
+        <BaseButton v-if="button" v-bind="button" class="mt-5"></BaseButton>
       </div>
     </DWrapper>
   </div>

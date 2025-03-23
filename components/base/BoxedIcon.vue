@@ -1,8 +1,4 @@
 <script setup lang="ts">
-export type TIcon = {
-  name: string;
-};
-
 type Props = {
   icon?: TIcon;
   text?: string;

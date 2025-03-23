@@ -1,34 +1,32 @@
 <script setup lang="ts">
-import type { TBackground, TImage, TIntro, TSpacing } from "@/types"
+import type { TBackground, TImage, TIntro, TSpacing } from "@/types";
 
 interface Props {
-	id: string
-  spacing: TSpacing
-  background: TBackground
-  intro: TIntro
-  image: TImage
+  id: string;
+  intro: TIntro;
+  image: TImage;
 }
 
 const {
   spacing = {
-    vertical: "md"
+    vertical: "md",
   },
-	intro = {
-		heading: "A short heading",
-		title: "We are changing this World",
-		level: 3,
-		width: "md",
-		description: "This is a short description",
-		center: false
-	},
-	image = {
-		src: "placeholder.png",
-		alt: "placeholder"
-	},
+  intro = {
+    heading: "A short heading",
+    title: "We are changing this World",
+    level: 3,
+    width: "md",
+    description: "This is a short description",
+    center: false,
+  },
+  image = {
+    src: "placeholder.png",
+    alt: "placeholder",
+  },
   background = {
-    color: "neutral"
-  }
-} = defineProps<Props>()
+    color: "neutral",
+  },
+} = defineProps<Props>();
 </script>
 
 <template>

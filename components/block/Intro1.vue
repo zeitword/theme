@@ -1,23 +1,28 @@
 <script setup lang="ts">
-import type { TAnimationOptions, TBackground, TButton, TSize, TSpacing } from "@/types"
+import type {
+  TAnimationOptions,
+  TBackground,
+  TButton,
+  TSize,
+  TSpacing,
+} from "@/types";
 
 interface Props {
-	id: string
-  name?: string
-  spacing: TSpacing
-	background: TBackground
-  heading?: string
-  title?: string
-  level?: number
-  width?: TSize
-  description?: string
-  button?: TButton
-  center?: boolean
-  animation?: TAnimationOptions
+  id: string;
+  name?: string;
+  spacing: TSpacing;
+  background: TBackground;
+  heading?: string;
+  title?: string;
+  level?: number;
+  width?: TSize;
+  description?: string;
+  button?: TButton;
+  center?: boolean;
+  animation?: TAnimationOptions;
 }
 
 const {
-  name,
   spacing = { vertical: "md" },
   heading = "A short heading",
   title = "We are changing this World",
@@ -31,27 +36,27 @@ const {
     name: "rotateIn3d",
     duration: 0.3,
     delay: 0.0,
-    enabled: true
-  }
-} = defineProps<Props>()
+    enabled: true,
+  },
+} = defineProps<Props>();
 type SizeOptions = {
-  title: string
-  description: string
-}
+  title: string;
+  description: string;
+};
 const widthClasses: { [key: string]: SizeOptions } = {
   sm: {
     title: "max-w-sm",
-    description: "max-w-xl"
+    description: "max-w-xl",
   },
   md: {
     title: "max-w-lg",
-    description: "max-w-2xl"
+    description: "max-w-2xl",
   },
   lg: {
     title: "max-w-xl",
-    description: "max-w-3xl"
-  }
-}
+    description: "max-w-3xl",
+  },
+};
 </script>
 
 <template>
@@ -60,7 +65,9 @@ const widthClasses: { [key: string]: SizeOptions } = {
       <div class="grid place-items-start gap-y-5">
         <div
           class="flex flex-col gap-4"
-          :class="[center ? 'mx-auto items-center text-center transition-all' : '']"
+          :class="[
+            center ? 'mx-auto items-center text-center transition-all' : '',
+          ]"
         >
           <div class="flex flex-col gap-2">
             <BaseHeading
@@ -91,10 +98,7 @@ const widthClasses: { [key: string]: SizeOptions } = {
             {{ description }}
           </BaseText>
         </div>
-        <BaseButton
-          v-if="button"
-          v-bind="button"
-        />
+        <BaseButton v-if="button" v-bind="button" />
       </div>
     </DWrapper>
   </DBackground>

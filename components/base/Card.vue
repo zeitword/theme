@@ -1,31 +1,9 @@
 <script setup lang="ts">
 import { NuxtLink } from "#components";
 
-type TIcon = {
-  name: string;
-};
-
-type TImage = {
-  src: string;
-  alt: string;
-};
-
-export type TLink = {
-  url: string;
-  target?: "_blank" | "_self";
-};
-
-export interface TButton {
-  variant: "primary" | "secondary" | "transparent" | "text" | "accent";
-  link?: TLink;
-  text: string;
-}
-
 type Props = {
   variant: "neutral" | "white" | "accent";
   icon?: TIcon;
-  image?: TImage;
-  number?: string;
   heading?: string;
   title: string;
   description?: string;

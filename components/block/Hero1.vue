@@ -1,21 +1,16 @@
 <script setup lang="ts">
-import type { TBackground, TButton, TImage, TSize, TVideo } from "@/types"
+import type { TBackground, TButton, TImage, TSize, TVideo } from "@/types";
 
 interface Props {
-	id: string
-	background: TBackground
-  video?: TVideo
-  image?: TImage
-  heading?: string
-  title?: string
-  level?: number
-  benefits?: string[]
-	stackBenefits?: boolean
-  description?: string
-  buttons?: TButton[]
-  height: "full" | "md"
-  width?: TSize
-  center: boolean
+  id: string;
+  background: TBackground;
+  video?: TVideo;
+  image?: TImage;
+  heading?: string;
+  title?: string;
+  description?: string;
+  buttons?: TButton[];
+  center: boolean;
 }
 
 const {
@@ -23,57 +18,45 @@ const {
   image,
   heading = "This is a short headline",
   title = "This is a title which is a bit longer",
-  benefits = ["Benefit 1", "Benefit 2", "Benefit 3"],
   description = "This is a longer description",
   buttons = [
     {
       text: "Try now for free",
       link: {
         url: "#",
-        target: "_self"
+        target: "_self",
       },
       variant: "primary",
-      inverse: true
+      inverse: true,
     },
     {
       text: "Learn more",
       link: {
         url: "#",
-        target: "_self"
+        target: "_self",
       },
       variant: "secondary",
-      inverse: true
-    }
+      inverse: true,
+    },
   ],
-  height = "md",
   center = false,
-} = defineProps<Props>()
+} = defineProps<Props>();
 
 const isInverted = computed(() => {
-  return !!(video || image?.src)
-})
-
-const heightClasses: { [key: string]: string } = {
-  full: "h-[calc(100vh)]",
-  md: "md:h-[700px] h-[500px]"
-}
+  return !!(video || image?.src);
+});
 
 const widthClasses: { [key: string]: string } = {
   xs: "max-w-lg",
   sm: "max-w-2xl",
   md: "max-w-5xl",
-  lg: "max-w-7xl"
-}
+  lg: "max-w-7xl",
+};
 </script>
 
 <template>
-  <DBackground v-bind="background"
-		:id
-	>
-    <div
-      class="relative mx-auto flex max-w-7xl"
-      :class="[heightClasses[height]]"
-    >
+  <DBackground v-bind="background" :id>
+    <div class="relative mx-auto flex max-w-7xl h-[800px]">
       <div
         class="absolute overflow-hidden transition-all inset-0 xl:inset-2 xl:rounded-lg"
       >
@@ -108,21 +91,17 @@ const widthClasses: { [key: string]: string } = {
           <div
             v-if="heading"
             class="inline-flex rounded-full px-2"
-            :class="[isInverted ? 'bg-neutral/20 text-neutral-inverse' : 'bg-neutral-inverse/5 text-neutral-subtle']"
+            :class="[
+              isInverted
+                ? 'bg-neutral/20 text-neutral-inverse'
+                : 'bg-neutral-inverse/5 text-neutral-subtle',
+            ]"
           >
-            <BaseHeading
-              :level="4"
-              :inverse="isInverted"
-            >
+            <BaseHeading :level="4" :inverse="isInverted">
               {{ heading }}
             </BaseHeading>
           </div>
-          <BaseTitle
-            v-if="title"
-            :level="level"
-            :inverse="isInverted"
-            neutral
-          >
+          <BaseTitle v-if="title" :level="level" :inverse="isInverted" neutral>
             {{ title }}
           </BaseTitle>
           <BaseText
@@ -136,9 +115,10 @@ const widthClasses: { [key: string]: string } = {
           <div
             v-if="benefits.length > 0"
             class="flex gap-5"
-						:class="[center ? 'justify-center' : 'justify-start',
-							stackBenefits ? 'flex-col' : 'flex-wrap'
-						]"
+            :class="[
+              center ? 'justify-center' : 'justify-start',
+              stackBenefits ? 'flex-col' : 'flex-wrap',
+            ]"
           >
             <BaseCheckmark
               v-for="benefit in benefits"
@@ -154,7 +134,7 @@ const widthClasses: { [key: string]: string } = {
             <BaseButton
               v-for="button in buttons"
               v-bind="button"
-							:inverse="isInverted"
+              :inverse="isInverted"
             />
           </BaseButtonGroup>
         </div>

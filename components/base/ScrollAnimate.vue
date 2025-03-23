@@ -1,19 +1,4 @@
 <script setup lang="ts">
-type TAnimationName = "slideInUp" | "rotateIn" | "scaleIn" | "rotateIn3d";
-
-type StaggerOptions = {
-  enabled: boolean;
-  delay: number;
-};
-
-export type TAnimationOptions = {
-  name?: TAnimationName;
-  enabled?: boolean;
-  duration?: number;
-  delay?: number;
-  stagger?: StaggerOptions;
-};
-
 type Props = {
   animation?: TAnimationOptions;
 };

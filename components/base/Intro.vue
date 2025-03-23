@@ -1,17 +1,4 @@
 <script setup lang="ts">
-export type TSize = "xs" | "sm" | "md" | "lg";
-
-type TLink = {
-  url: string;
-  target?: "_blank" | "_self";
-};
-
-type TButton = {
-  variant: "primary" | "secondary" | "transparent" | "text" | "accent";
-  link?: TLink;
-  text: string;
-};
-
 type Props = {
   heading?: string;
   level?: number;
@@ -20,7 +7,7 @@ type Props = {
   button?: TButton;
   width?: TSize;
   center?: boolean;
-  animation?: any;
+  animation?: TAnimationOptions;
   inverse?: boolean;
 };
 
