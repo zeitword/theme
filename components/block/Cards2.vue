@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import type { TBackground, TCard, TIntro, TSpacing } from "@/types"
+import type { TBackground, TButton, TCard, TIntro, TSpacing } from "@/types"
 
 interface Props {
-	id: string
+  id: string
   spacing: TSpacing
   background: TBackground
   intro?: TIntro
   cards: TCard[]
+	buttons: TButton[]
 }
 
 const {
@@ -43,23 +44,47 @@ const {
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor."
     }
-  ]
+  ],
+	buttons = [
+		{
+			variant: "primary",
+			text: "Button 1",
+			link: {url: "#"}
+		},
+		{
+			variant: "secondary",
+			text: "Button 2",
+			link: "#"
+		}
+	]
 } = defineProps<Props>()
 </script>
 
 <template>
-  <DBackground v-bind="background" :id>
+  <DBackground
+    v-bind="background"
+    :id
+  >
     <DWrapper :spacing="spacing">
       <div class="space-y-12">
         <BaseIntro v-bind="intro" />
-        <BaseCardGrid :cards="cards">
-          <BaseImageCard
+        <div class="max-w-xl mx-auto space-y-3">
+          <BaseSmallCard
             class="flex-1 basis-xs"
             v-for="(card, index) in cards"
             :key="index"
             v-bind="card"
           />
-        </BaseCardGrid>
+        </div>
+        <BaseButtonGroup
+          v-if="buttons?.length > 0"
+          class="mt-4 w-full md:mt-0 justify-center"
+        >
+          <BaseButton
+            v-for="button in buttons"
+            v-bind="button"
+          />
+        </BaseButtonGroup>
       </div>
     </DWrapper>
   </DBackground>

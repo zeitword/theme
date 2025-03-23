@@ -1,60 +1,82 @@
 <script setup lang="ts">
-import type { QuestionsProps, TIntro, TButton, TBackground, TSpacing } from "@/types"
-import { AccordionContent, AccordionHeader, AccordionItem, AccordionRoot, AccordionTrigger } from "reka-ui"
-import { ChevronDown } from "lucide-vue-next"
+import {
+  AccordionContent,
+  AccordionHeader,
+  AccordionItem,
+  AccordionRoot,
+  AccordionTrigger,
+} from "reka-ui";
+import { ChevronDown } from "lucide-vue-next";
+
+type TIntro = {
+  heading: string;
+  width: string;
+  description: string;
+  center: boolean;
+};
+
+type QuestionsProps = {
+  title: string;
+  answer: string;
+};
+
+type TLink = {
+  url: string;
+  target?: "_blank" | "_self" | "_parent" | "_top";
+};
+
+type TButton = {
+  variant: "primary" | "secondary" | "transparent" | "text" | "accent";
+  link?: TLink;
+  text: string;
+};
 
 interface Props {
-  background: TBackground
-  spacing: TSpacing
-  intro: TIntro
-  footerHeading: string
-  footerDescription: string
-  questions: QuestionsProps[]
-  buttons: TButton[]
+  intro: TIntro;
+  footerHeading: string;
+  footerDescription: string;
+  questions: QuestionsProps[];
+  buttons: TButton[];
 }
 
 const {
   intro = {
     heading: "A short heading",
     title: "FAQs",
-    level: 3,
-    width: "md",
     description: "This is a short description",
-    center: true
+    center: true,
   },
-  spacing = {
-    vertical: "md"
-  },
+
   questions = [
     {
       title: "Question text goes here",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere."
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.",
     },
     {
       title: "Question text goes here",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere."
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.",
     },
     {
       title: "Question text goes here",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere."
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.",
     },
     {
       title: "Question text goes here",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere."
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.",
     },
     {
       title: "Question text goes here",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere."
-    }
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.",
+    },
   ],
   footerHeading = "Still have questions?",
-  footerDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-} = defineProps<Props>()
+  footerDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+} = defineProps<Props>();
 </script>
 
 <template>
@@ -68,10 +90,7 @@ const {
           type="single"
           :collapsible="true"
         >
-          <template
-            v-for="(item, index) in questions"
-            :key="index"
-          >
+          <template v-for="(item, index) in questions" :key="index">
             <AccordionItem
               class="border-neutral overflow-hidden border-t last:border-b focus-within:relative focus-within:z-10"
               :value="index.toString()"
@@ -98,23 +117,19 @@ const {
           </template>
         </AccordionRoot>
         <div class="mx-auto mt-6 max-w-md text-center md:mt-9 lg:mt-10">
-          <h4 class="text-title-sm mb-2 md:mb-2 md:text-xl md:leading-[1.3] lg:text-2xl">
+          <h4
+            class="text-title-sm mb-2 md:mb-2 md:text-xl md:leading-[1.3] lg:text-2xl"
+          >
             {{ footerHeading }}
           </h4>
-          <BaseText
-            :animation="{ enabled: false }"
-            size="xs"
-          >
+          <BaseText :animation="{ enabled: false }" size="xs">
             {{ footerDescription }}
           </BaseText>
           <BaseButtonGroup
             v-if="buttons?.length > 0"
             class="mt-4 w-full justify-center"
           >
-            <BaseButton
-              v-for="button in buttons"
-              v-bind="button"
-            />
+            <BaseButton v-for="button in buttons" v-bind="button" />
           </BaseButtonGroup>
         </div>
       </div>

@@ -1,13 +1,3 @@
-<script setup lang="ts">
-import type { TCard } from "@/types"
-
-interface Props {
-  cards: TCard[]
-}
-
-const { cards } = defineProps<Props>()
-</script>
-
 <template>
   <BaseScrollAnimate
     class="flex flex-wrap gap-3"
@@ -18,10 +8,10 @@ const { cards } = defineProps<Props>()
       enabled: true,
       stagger: {
         delay: 0.1,
-        enabled: true
-      }
+        enabled: true,
+      },
     }"
   >
-		<slot></slot>
+    <slot />
   </BaseScrollAnimate>
 </template>

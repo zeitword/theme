@@ -1,8 +1,38 @@
 <script setup lang="ts">
-import { NuxtLink } from "#components"
-import type { TCard } from "@/types"
+import { NuxtLink } from "#components";
 
-type Props = TCard
+type TIcon = {
+  name: string;
+};
+
+type TImage = {
+  src: string;
+  alt: string;
+};
+
+export type TLink = {
+  url: string;
+  target?: "_blank" | "_self";
+};
+
+export interface TButton {
+  variant: "primary" | "secondary" | "transparent" | "text" | "accent";
+  link?: TLink;
+  text: string;
+}
+
+type Props = {
+  variant: "neutral" | "white" | "accent";
+  icon?: TIcon;
+  image?: TImage;
+  number?: string;
+  heading?: string;
+  title: string;
+  description?: string;
+  button?: TButton;
+  link?: TLink;
+  interactive?: boolean;
+};
 
 const {
   icon,
@@ -14,69 +44,69 @@ const {
   description = "",
   button = null,
   link = null,
-  interactive = false
-} = defineProps<Props>()
+  interactive = false,
+} = defineProps<Props>();
 
 const component = computed(() => {
-  if (link?.url) return NuxtLink
-  return "div"
-})
+  if (link?.url) return NuxtLink;
+  return "div";
+});
 
 type CardStateOption = {
-  default: string
-  hover: string
-}
+  default: string;
+  hover: string;
+};
 
 type VariantOptions = {
-  bg: CardStateOption
-  text: CardStateOption
-  iconBg: CardStateOption
-  iconFg: CardStateOption
-}
+  bg: CardStateOption;
+  text: CardStateOption;
+  iconBg: CardStateOption;
+  iconFg: CardStateOption;
+};
 
 const variantClasses: { [key: string]: VariantOptions } = {
   neutral: {
     bg: {
       default: "bg-neutral-subtle",
-      hover: "hover:bg-neutral-hover"
+      hover: "hover:bg-neutral-hover",
     },
     text: {
       default: "text-neutral",
-      hover: "text-neutral-strong"
+      hover: "text-neutral-strong",
     },
     iconBg: {
       default: "bg-neutral-inverse",
-      hover: "group-hover:bg-primary"
+      hover: "group-hover:bg-primary",
     },
     iconFg: {
       default: "text-neutral-inverse",
-      hover: "group-hover:text-neutral-inverse"
-    }
+      hover: "group-hover:text-neutral-inverse",
+    },
   },
   white: {
     bg: {
       default: "bg-neutral",
-      hover: "hover:bg-neutral-hover"
+      hover: "hover:bg-neutral-hover",
     },
     text: {
       default: "text-neutral",
-      hover: "text-neutral-strong"
+      hover: "text-neutral-strong",
     },
     iconBg: {
       default: "bg-neutral-inverse",
-      hover: "group-hover:bg-primary"
+      hover: "group-hover:bg-primary",
     },
     iconFg: {
       default: "text-neutral-inverse",
-      hover: "group-hover:text-neutral-inverse"
-    }
-  }
-}
+      hover: "group-hover:text-neutral-inverse",
+    },
+  },
+};
 
 const variantClass = computed(() => {
-  if (!variant || !variantClasses[variant]) return variantClasses["neutral"]
-  return variantClasses[variant]
-})
+  if (!variant || !variantClasses[variant]) return variantClasses["neutral"];
+  return variantClasses[variant];
+});
 </script>
 
 <template>
@@ -84,13 +114,13 @@ const variantClass = computed(() => {
     :is="component"
     :to="link"
     class="group rounded-large relative z-1 flex flex-col items-start justify-between gap-5 p-1"
-    :class="[variantClass?.bg.default, interactive ? variantClass?.bg.hover : '']"
+    :class="[
+      variantClass?.bg.default,
+      interactive ? variantClass?.bg.hover : '',
+    ]"
   >
     <div class="flex flex-col">
-      <div
-        v-if="image"
-        class="h-50 w-full"
-      >
+      <div v-if="image" class="h-50 w-full">
         <BaseImage
           v-bind="image"
           class="rounded-medium h-full w-full object-cover"
@@ -102,25 +132,39 @@ const variantClass = computed(() => {
           :icon="icon"
           :fg="variantClass?.iconFg.default"
           :bg="variantClass?.iconBg.default"
-          :class="[interactive ? [variantClass?.iconFg.hover, variantClass?.iconBg.hover] : '']"
+          :class="[
+            interactive
+              ? [variantClass?.iconFg.hover, variantClass?.iconBg.hover]
+              : '',
+          ]"
         />
         <BaseBoxedIcon
           v-else-if="number"
           :text="number"
           :fg="variantClass?.iconFg.default"
           :bg="variantClass?.iconBg.default"
-          :class="[interactive ? [variantClass?.iconFg.hover, variantClass?.iconBg.hover] : '']"
+          :class="[
+            interactive
+              ? [variantClass?.iconFg.hover, variantClass?.iconBg.hover]
+              : '',
+          ]"
         />
         <div class="flex flex-col gap-3">
           <BaseHeading
             v-if="heading"
             :animation="{ enabled: false }"
-            :class="[variantClass?.text.default, interactive ? variantClass?.text.hover : '']"
+            :class="[
+              variantClass?.text.default,
+              interactive ? variantClass?.text.hover : '',
+            ]"
           >
             {{ heading }}
           </BaseHeading>
           <BaseTitle
-            :class="[variantClass?.text.default, interactive ? variantClass?.text.hover : '']"
+            :class="[
+              variantClass?.text.default,
+              interactive ? variantClass?.text.hover : '',
+            ]"
             :animation="{ enabled: false }"
             :level="5"
             neutral
@@ -128,7 +172,10 @@ const variantClass = computed(() => {
             {{ title }}
           </BaseTitle>
           <BaseText
-            :class="[variantClass?.text.default, interactive ? variantClass?.text.hover : '']"
+            :class="[
+              variantClass?.text.default,
+              interactive ? variantClass?.text.hover : '',
+            ]"
             :animation="{ enabled: false }"
             size="sm"
             variant="strong"
@@ -139,10 +186,7 @@ const variantClass = computed(() => {
         </div>
       </div>
     </div>
-    <div
-      class="p-5"
-      v-if="button"
-    >
+    <div v-if="button" class="p-5">
       <BaseButton v-bind="button" />
     </div>
   </component>

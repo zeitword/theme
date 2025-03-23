@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { TBackground } from "@/types";
-
-type Props = TBackground;
+type Props = {
+  color?: string;
+};
 
 const { color = "neutral" } = defineProps<Props>();
 
@@ -17,6 +17,6 @@ const bgColor = computed(() => {
 
 <template>
   <div :class="color !== 'transparent' ? bgColor : ''">
-    <slot></slot>
+    <slot />
   </div>
 </template>

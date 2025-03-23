@@ -1,9 +1,28 @@
 <script setup lang="ts">
-import type { TIntro } from "@/types"
+export type TSize = "xs" | "sm" | "md" | "lg";
 
-type Props = TIntro & {
-  inverse?: boolean
-}
+type TLink = {
+  url: string;
+  target?: "_blank" | "_self";
+};
+
+type TButton = {
+  variant: "primary" | "secondary" | "transparent" | "text" | "accent";
+  link?: TLink;
+  text: string;
+};
+
+type Props = {
+  heading?: string;
+  level?: number;
+  title?: string;
+  description?: string;
+  button?: TButton;
+  width?: TSize;
+  center?: boolean;
+  animation?: any;
+  inverse?: boolean;
+};
 
 const {
   heading = "",
@@ -17,32 +36,34 @@ const {
     name: "rotateIn3d",
     duration: 0.3,
     delay: 0.0,
-    enabled: true
+    enabled: true,
   },
-	inverse = false
-} = defineProps<Props>()
+  inverse = false,
+} = defineProps<Props>();
+
 type SizeOptions = {
-  title: string
-  description: string
-}
+  title: string;
+  description: string;
+};
+
 const widthClasses: { [key: string]: SizeOptions } = {
-	xs: {
+  xs: {
     title: "max-w-xs",
-    description: "max-w-sm"
+    description: "max-w-sm",
   },
   sm: {
     title: "max-w-sm",
-    description: "max-w-xl"
+    description: "max-w-xl",
   },
   md: {
     title: "max-w-lg",
-    description: "max-w-2xl"
+    description: "max-w-2xl",
   },
   lg: {
     title: "max-w-xl",
-    description: "max-w-3xl"
-  }
-}
+    description: "max-w-3xl",
+  },
+};
 </script>
 
 <template>
@@ -57,7 +78,7 @@ const widthClasses: { [key: string]: SizeOptions } = {
           class="text-neutral-subtle"
           :animation="{ ...animation, delay: 0.0 }"
           :class="[widthClasses[width]?.title]"
-					:inverse="inverse"
+          :inverse="inverse"
         >
           {{ heading }}
         </BaseHeading>
@@ -67,7 +88,7 @@ const widthClasses: { [key: string]: SizeOptions } = {
           neutral
           :animation="{ ...animation, delay: 0.15 }"
           :class="[widthClasses[width]?.title]"
-					:inverse="inverse"
+          :inverse="inverse"
         >
           {{ title }}
         </BaseTitle>
@@ -78,7 +99,7 @@ const widthClasses: { [key: string]: SizeOptions } = {
         size="md"
         class="max-w-3xl whitespace-pre-line"
         :class="[widthClasses[width]?.description]"
-				:inverse="inverse"
+        :inverse="inverse"
       >
         {{ description }}
       </BaseText>
@@ -86,8 +107,8 @@ const widthClasses: { [key: string]: SizeOptions } = {
     <BaseButton
       v-if="button"
       v-bind="button"
-			:class="center ? 'mx-auto' : ''"
-			:inverse="inverse"
+      :class="center ? 'mx-auto' : ''"
+      :inverse="inverse"
     />
   </div>
 </template>

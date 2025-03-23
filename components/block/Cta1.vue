@@ -1,48 +1,53 @@
 <script setup lang="ts">
-import type { TBackground, TSpacing, TButton } from "@/types"
-import { CheckIcon } from "lucide-vue-next"
+import { CheckIcon } from "lucide-vue-next";
+
+type TLink = {
+  url: string;
+  target?: "_blank" | "_self";
+};
+
+interface TButton {
+  variant: "primary" | "secondary" | "transparent" | "text" | "accent";
+  link?: TLink;
+  text: string;
+}
 
 interface Props {
-  background: TBackground
-  spacing: TSpacing
-  heading?: string
-  title?: string
-  description?: string
-  benefits?: string[]
-  buttons?: TButton[]
+  heading?: string;
+  title?: string;
+  description?: string;
+  benefits?: string[];
+  buttons?: TButton[];
 }
 
 const {
-  spacing = {
-    top: "None",
-    bottom: "None"
-  },
-  background = {
-    color: "neutral",
-    visible: true
-  },
   heading = "Why Choose Us",
   title = "Transform Your Business",
   description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  benefits = ["24/7 Customer Support", "Easy Integration", "Scalable Solution", "Cost Effective"],
+  benefits = [
+    "24/7 Customer Support",
+    "Easy Integration",
+    "Scalable Solution",
+    "Cost Effective",
+  ],
   buttons = [
     {
       label: "Get Started",
       href: "#",
-      variant: "primary"
+      variant: "primary",
     },
     {
       label: "Learn More",
       href: "#",
-      variant: "secondary"
-    }
-  ]
-} = defineProps<Props>()
+      variant: "secondary",
+    },
+  ],
+} = defineProps<Props>();
 </script>
 
 <template>
-  <DBackground v-bind="background">
-    <DWrapper :spacing="spacing">
+  <DBackground>
+    <DWrapper :spacing="{ vertical: 'none' }">
       <div
         class="md:col-span-7 flex flex-col justify-center p-10 w-full md:py-24 text-center max-w-xl mx-auto"
       >
@@ -78,7 +83,7 @@ const {
 
         <!-- Buttons -->
         <BaseButtonGroup v-if="buttons" class="mx-auto">
-          <BaseButton v-for="button in buttons" v-bind="button" />
+          <BaseButton v-for="button in buttons" :key="button" v-bind="button" />
         </BaseButtonGroup>
       </div>
     </DWrapper>

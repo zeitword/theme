@@ -34,11 +34,11 @@ const {
 <template>
   <DBackground v-bind="background" :id>
     <DWrapper :spacing="spacing">
-      <div class="space-y-12">
-        <div class="p-2 rounded-2xl bg-neutral-strong w-full">
-          <BaseImage class="rounded-md shadow-lg w-full" v-bind="image" />
-        </div>
+      <div class="grid md:grid-cols-2 gap-10 md:gap-20 items-center">
         <BaseIntro v-bind="intro" />
+				<div class="p-2 rounded-2xl bg-neutral-strong w-full">
+					<BaseImage class="rounded-md shadow-lg w-full" v-bind="image" />
+				</div>
       </div>
     </DWrapper>
   </DBackground>
