@@ -2,18 +2,17 @@
 import { computed } from "vue";
 
 type Props = {
-  icon: TIcon;
+  name: string;
 };
 
-const { icon } = defineProps<Props>();
+const { name } = defineProps<Props>();
 
 const iconComponent = computed(() => {
-  if (!icon?.name) return null;
-  return icons[icon.name as keyof typeof icons];
+  if (!name) return null;
+  return icons[name as keyof typeof icons];
 });
 </script>
 
 <template>
-  <!-- <pre>{{icon}}	</pre> -->
   <component :is="iconComponent" />
 </template>

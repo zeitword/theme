@@ -1,6 +1,5 @@
 <script setup lang="ts"></script>
 <template>
   <div class="bg-red-500">hi</div>
-  <HelloWorld />
-  <BlockCta1 />
+  <block-hero-1 title="HI" description="hi" />
 </template>
