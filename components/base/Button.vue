@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { NuxtLink } from "#components";
 
+type TButton = {
+  variant: "primary" | "secondary" | "transparent" | "text" | "accent";
+  link?: TLink;
+  text: string;
+};
+
 type Props = TButton & {
   inverse?: boolean;
 };

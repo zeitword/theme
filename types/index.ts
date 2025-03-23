@@ -90,10 +90,10 @@ export type TTextLink = {
   link: TLink;
 };
 
-export interface TImageLink {
+export type TImageLink = {
   image: TImage;
   link: TLink;
-}
+};
 
 export type TIconLink = {
   icon: string;
@@ -103,11 +103,11 @@ export type TIconLink = {
 
 export type TLinkTarget = "_self" | "_blank";
 
-export interface TButton {
+export type TButton = {
   variant: "primary" | "secondary" | "transparent" | "text" | "accent";
   link?: TLink;
   text: string;
-}
+};
 
 export type TIcon = {
   name: string;
@@ -128,7 +128,7 @@ export type TCard = {
 };
 
 // Intro
-export interface TIntro {
+export type TIntro = {
   heading?: string;
   level?: number;
   title?: string;
@@ -137,7 +137,7 @@ export interface TIntro {
   width?: TSize;
   center?: boolean;
   animation?: TAnimationOptions;
-}
+};
 
 // Map
 export type TLocationType = "image" | "marker";
@@ -176,12 +176,12 @@ export type TContact = {
 };
 
 // Field
-export interface TFieldSelectOption {
+export type TFieldSelectOption = {
   value: string;
   label: string;
-}
+};
 
-export interface TField {
+export type TField = {
   type:
     | "text"
     | "email"
@@ -195,4 +195,4 @@ export interface TField {
   label: string;
   placeholder: string;
   required: boolean;
-}
+};
