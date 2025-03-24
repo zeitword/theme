@@ -6,7 +6,9 @@ const currentDir = dirname(fileURLToPath(import.meta.url));
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
-
+  future: {
+    compatibilityVersion: 4,
+  },
   vite: {
     plugins: [tailwindcss()],
   },
