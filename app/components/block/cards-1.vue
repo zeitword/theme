@@ -20,7 +20,6 @@ const sortedCards = computed(() => {
         :key="card.id"
         v-bind="card.content"
       />
-      {{ card }}
     </div>
   </d-wrapper>
 </template>
