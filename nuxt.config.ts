@@ -15,14 +15,6 @@ export default defineNuxtConfig({
   imports: {
     dirs: ["types"],
   },
-  components: {
-    global: true,
-    dirs: [
-      {
-        path: "./components",
-      },
-    ],
-  },
   image: {
     provider: "vercel",
     dir: "public",
