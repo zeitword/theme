@@ -59,7 +59,7 @@ const sortedLinks = computed(() => {
             <d-image
               class="h-full min-w-10 object-contain transition-all duration-500 ease-in-out"
               :class="[
-                isScrolled ? 'max-w-20' : 'max-w-32',
+                isScrolled ? 'max-w-20 max-h-8' : 'max-w-32 max-h-10',
                 startInverted && !isScrolled ? 'invert' : '',
               ]"
               :src="logo[0].content.image"
