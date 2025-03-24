@@ -19,7 +19,7 @@ export default defineNuxtConfig({
     global: true,
     dirs: [
       {
-        path: "~/components",
+        path: "./components",
       },
     ],
   },
