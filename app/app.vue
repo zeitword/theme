@@ -1,11 +1,29 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const links = [
+  {
+    id: "0195c915-2bee-7eaf-8c88-55dc184eb8cd",
+    order: "0|hzzzzz:",
+    content: {
+      url: "/",
+      text: "Home",
+      target: "_self",
+    },
+    componentId: "0195c914-80a5-704c-a54b-ab5c7baddc24",
+  },
+  {
+    id: "0195c916-0109-7d07-849d-12a5456f2f29",
+    order: "0|i00007:",
+    content: {
+      url: "/what",
+      text: "What",
+      target: "_self",
+    },
+    componentId: "0195c914-80a5-704c-a54b-ab5c7baddc24",
+  },
+];
+</script>
 <template>
-  <block-navigation-1
-    :links="[
-      { id: 1, content: { text: 'Link 1', url: '#' } },
-      { id: 2, content: { text: 'Link 2', url: '#' } },
-    ]"
-  />
+  <block-navigation-1 :links="links" />
   <block-hero-1
     title="HI"
     description="hi this is a description"

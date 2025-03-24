@@ -53,8 +53,7 @@ const sortedLinks = computed(() => {
         <div class="flex flex-1 items-center">
           <NuxtLink
             v-if="logo"
-            :href="logo.link.url"
-            :target="logo.link.target"
+            :href="logo[0].content.link"
             class="inline-flex h-full"
           >
             <d-image
@@ -63,7 +62,7 @@ const sortedLinks = computed(() => {
                 isScrolled ? 'max-w-20' : 'max-w-32',
                 startInverted && !isScrolled ? 'invert' : '',
               ]"
-              v-bind="logo.image"
+              v-bind="logo[0].content.image"
             />
           </NuxtLink>
         </div>
