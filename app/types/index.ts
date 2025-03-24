@@ -14,3 +14,22 @@ export type TCard = {
   description: string;
   buttons?: TButton[];
 };
+
+export type TLink = {
+  to: string;
+  target?: "_blank" | "_self" | "_parent" | "_top";
+  inverse?: boolean;
+};
+
+export type TImageLink = {
+  src: string;
+  alt: string;
+  to?: string;
+  target?: "_blank" | "_self" | "_parent" | "_top";
+};
+
+export type TTextLink = {
+  text: string;
+  to?: string;
+  target?: "_blank" | "_self" | "_parent" | "_top";
+};

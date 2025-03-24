@@ -1,5 +1,11 @@
 <script setup lang="ts"></script>
 <template>
+  <block-navigation-1
+    :links="[
+      { id: 1, content: { text: 'Link 1', url: '#' } },
+      { id: 2, content: { text: 'Link 2', url: '#' } },
+    ]"
+  />
   <block-hero-1
     title="HI"
     description="hi this is a description"
@@ -14,6 +20,13 @@
         content: {
           icon: 'Activity',
           title: 'Card 1',
+          description: 'hi this is text',
+        },
+      },
+      {
+        content: {
+          icon: 'X',
+          title: 'Card 2',
           description: 'hi this is text',
         },
       },
