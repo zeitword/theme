@@ -12,11 +12,13 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  css: [resolve(currentDir, "assets/css/main.css")],
+
+  css: [resolve(currentDir, "./") + "/app/assets/css/main.css"],
 
   imports: {
     dirs: ["types"],
   },
+
   image: {
     provider: "vercel",
     dir: "public",
