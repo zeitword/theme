@@ -62,7 +62,7 @@ const sortedLinks = computed(() => {
                 isScrolled ? 'max-w-20' : 'max-w-32',
                 startInverted && !isScrolled ? 'invert' : '',
               ]"
-              v-bind="logo[0].content.image"
+              :src="logo[0].content.image"
             />
           </NuxtLink>
         </div>
