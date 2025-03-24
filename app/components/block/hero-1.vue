@@ -21,15 +21,15 @@ const sortedButtons = computed(() => {
         {{ title }}
       </h1>
       <p class="text-neutral-subtle">{{ description }}</p>
-    </div>
-    <div>
-      <d-button
-        v-for="button in sortedButtons"
-        :key="button.id"
-        v-bind="button.content"
-      >
-        {{ button.content.text }}
-      </d-button>
+      <div class="mx-auto space-x-2">
+        <d-button
+          v-for="button in sortedButtons"
+          :key="button.id"
+          v-bind="button.content"
+        >
+          {{ button.content.text }}
+        </d-button>
+      </div>
     </div>
   </d-wrapper>
 </template>

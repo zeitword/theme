@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { computed } from "vue";
-
 type Props = {
   icon?: string;
   title: string;
@@ -26,10 +24,7 @@ const sortedButtons = computed(() => {
         v-if="icon"
         class="size-10 grid place-items-center group-hover:bg-neutral-700 transition-all"
       >
-        <d-file-icon
-          :name="icon"
-          class="group-hover:text-white transition-all"
-        />
+        <d-icon :name="icon" class="group-hover:text-white transition-all" />
       </div>
       <div class="space-y-2 max-w-xl">
         <h3 class="text-copy-lg text-neutral group-hover:text-neutral-inverse">
