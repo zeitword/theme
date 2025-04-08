@@ -9,9 +9,9 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4,
   },
-  vite: {
-    plugins: [tailwindcss()],
-  },
+  // vite: {
+  //   plugins: [tailwindcss()],
+  // },
 
   css: [resolve(currentDir, "./") + "/app/assets/css/main.css"],
 
