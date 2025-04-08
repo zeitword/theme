@@ -13,7 +13,7 @@ export default defineNuxtConfig({
   //   plugins: [tailwindcss()],
   // },
 
-  css: [resolve(currentDir, "./") + "/app/assets/css/main.css"],
+  // css: [resolve(currentDir, "./") + "/app/assets/css/main.css"],
 
   imports: {
     dirs: ["types"],
